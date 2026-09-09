@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 // int binarysearch(vector<int> arr)
@@ -141,3 +142,94 @@ using namespace std;
 //     cout << bookcase(arr, n, m) << endl;
 //     return 0;
 // }
+
+// bool isPossible(vector<int>& arr,int n,int m,int maxTime){
+//     int painters =1 ,time=0;
+
+//     for(int i=0; i<n; i++){
+//         if(time+arr[i]<=maxTime){
+//             time+=arr[i];
+//         }else{
+//             painters++;
+//             time=arr[i];
+//         }
+//     }
+//     return painters<=m;
+// }
+
+// int mintimetopaint(vector<int>& arr , int n,int m){
+//     int sum=0,maxval=INT_MIN;
+//     for(int i=0;i<n;i++){
+//         sum+=arr[i];
+//         maxval=max(maxval,arr[i]);
+//     }
+//     int st=maxval , end=sum , ans=-1;
+//     while (st<=end)
+//     {
+//         int mid=st+(end-st)/2;
+//         if(isPossible(arr,n,m,mid)){
+//             ans=mid;
+//             end=mid-1;
+//         }else{
+//             st=mid+1;
+//         }
+
+//     }
+//     return ans;
+
+// }
+
+// int main(){
+//     vector<int> arr={40,30,10,20};
+//     int n=4,m=2;
+//     cout<<mintimetopaint(arr,n,m)<<endl;
+//     return 0;
+// }
+
+bool isPossible(vector<int> &arr, int n, int c, int minimumallow)
+{
+    int cows = 1, last = arr[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] - last >= minimumallow)
+        {
+            cows++;
+            last = arr[i];
+        }
+        if (cows == c)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+int getdistance(vector<int> &arr, int n, int c)
+{
+    sort(arr.begin(), arr.end());
+    int st = 1, end = arr[n - 1] - arr[0], ans = -1;
+    while (st <= end)
+    {
+        int mid = st + (end - st) / 2;
+        if (isPossible(arr, n, c, mid))
+        {
+            ans = mid;
+            st = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int n = 5, c = 3;
+    vector<int> arr = {1, 2, 3, 8, 4, 9};
+
+    cout << getdistance(arr, n, c) << endl;
+    return 0;
+}
