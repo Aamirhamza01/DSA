@@ -273,27 +273,27 @@ using namespace std;
 //     return 0;
 // }
 
-int main() {
-    int arr[] = {40, 10, 30, 20, 50};
-    int n = 5;
+// int main() {
+//     int arr[] = {40, 10, 30, 20, 50};
+//     int n = 5;
 
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
+//     for (int i = 0; i < n - 1; i++) {
+//         for (int j = 0; j < n - i - 1; j++) {
 
-            if (arr[j] > arr[j + 1]) {
-                // Swap
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
+//             if (arr[j] > arr[j + 1]) {
+//                 // Swap
+//                 int temp = arr[j];
+//                 arr[j] = arr[j + 1];
+//                 arr[j + 1] = temp;
+//             }
+//         }
+//     }
 
-    cout << "Sorted Array: ";
+//     cout << "Sorted Array: ";
 
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i] << " ";
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
